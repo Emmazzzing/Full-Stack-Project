@@ -8,25 +8,28 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const MainNavigation = (props) => {
   const [drawerIsOpen, setdrawerIsOpen] = useState(false);
-  const OpenDrawer = () => {
+  const OpenDrawerHandler = () => {
     setdrawerIsOpen(true);
   };
 
-  const CloseDrawer = () => {
+  const CloseDrawerHandler = () => {
     setdrawerIsOpen(false);
   };
   return (
     <React.Fragment>
-      {drawerIsOpen && <Backdrop onClick={CloseDrawer} />}
-      {drawerIsOpen && (
-        <SideDrawer>
-          <nav className="main-navigation__drawer-nav">
-            <NavLinks />
-          </nav>
-        </SideDrawer>
-      )}
+      {drawerIsOpen && <Backdrop onClick={CloseDrawerHandler} />}
+
+      <SideDrawer show={drawerIsOpen} onClick={CloseDrawerHandler}>
+        <nav className="main-navigation__drawer-nav">
+          <NavLinks />
+        </nav>
+      </SideDrawer>
+
       <MainHeader>
-        <button className="main-navigation__menu-btn" onClick={OpenDrawer}>
+        <button
+          className="main-navigation__menu-btn"
+          onClick={OpenDrawerHandler}
+        >
           <span />
           <span />
           <span />

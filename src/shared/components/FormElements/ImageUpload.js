@@ -9,6 +9,7 @@ const ImageUpload = (props) => {
   const [isValid, setIsValid] = useState(false);
 
   const filePickerRef = useRef();
+
   useEffect(() => {
     if (!file) {
       return;
@@ -18,7 +19,7 @@ const ImageUpload = (props) => {
       setPreviewUrl(fileReader.result);
     };
     fileReader.readAsDataURL(file);
-  });
+  }, [file]);
 
   const pickedHandler = (event) => {
     //js onchange默认可以得到当前改变event的属性
